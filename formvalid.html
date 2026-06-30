@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Validation</title>
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+}
+
+form {
+    margin-top: 50px;
+}
+
+input {
+    padding: 8px;
+    margin: 10px;
+    width: 200px;
+}
+
+label {
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="myForm">
+
+    <!-- Name -->
+    <label for="name">Name:</label><br>
+    <input type="text" id="name"><br>
+
+    <!-- Email -->
+    <label for="email">Email:</label><br>
+    <input type="text" id="email"><br>
+
+    <!-- Password -->
+    <label for="password">Password:</label><br>
+    <input type="password" id="password"><br>
+
+    <button type="button" onclick="validateForm()">OK</button>
+    <button type="button" onclick="clearForm()">Clear</button>
+
+</form>
+
+<script>
+function validateForm() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    // Check empty fields
+    if (name === "") {
+        alert("Name is required");
+        return;
+    }
+
+    if (email === "") {
+        alert("Email is required");
+        return;
+    }
+
+    if (password === "") {
+        alert("Password is required");
+        return;
+    }
+
+    // Email validation
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if (!email.match(emailPattern)) {
+        alert("Invalid email format");
+        return;
+    }
+
+    alert("Form submitted successfully!");
+}
+
+// Clear function
+function clearForm() {
+    document.getElementById("myForm").reset();
+}
+</script>
+
+</body>
+</html>
